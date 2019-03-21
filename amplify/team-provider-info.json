@@ -15,5 +15,12 @@
                 "cognitode137ba5": {}
             }
         }
+    },
+    "undefined": {
+        "categories": {
+            "auth": {
+                "cognito88bed2ed": {}
+            }
+        }
     }
 }

@@ -13,7 +13,8 @@ For this I'll be using this technology stack :
 ##### Here's a quick guide to get set-up with AWS Cognito and [Amplify](https://aws-amplify.github.io/docs/js/react) : 
 
 - Firs create an AWS account and then install [Amplify for React](https://aws-amplify.github.io/docs/js/react)
-- Configure Amplify to link it to your AWS account
+- Install Amplify CLI globally using `npm install -g @aws-amplify/cli` (sudo might be needed)
+- Configure Amplify to link it to your AWS account using `amplify configure`
 - Install and save the following modules : aws-amplify, aws-amplify-react
 - Run `amplify init`, to intialize Amplify for this project
 - Run `amplify add auth`, and follow instructions that are prompted to add authentication

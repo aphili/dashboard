@@ -1,46 +1,118 @@
-import React from 'react'
-import {Grid, Form, Header, Icon, Segment, Button, Message} from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route} from "react-router-dom";
+import { Dimmer, Loader} from 'semantic-ui-react';
+import Amplify, { Auth } from 'aws-amplify';
+import aws_exports from '../aws-exports';
+import LoginForm from './LoginForm'
 
-export default function Login(){
+Amplify.configure(aws_exports);
 
-    return(
-        <div className='login-form'>
-        {/*
-          Heads up! The styles below are necessary for the correct render of this example.
-          You can do same with CSS, the main idea is that all the elements up to the `Grid`
-          below must have a height of 100%.
-        */}
-        <style>{`
-          body > div,
-          body > div > div,
-          body > div > div > div.login-form {
-            height: 100%;
+class Login extends Component {
+	constructor() {
+		super();
+
+		this.state = {
+			username: '',
+			password: '',
+			signedIn: false,
+			errMess: false, 
+			isLoading: false
+			
+		};
+
+		this.signIn = this.signIn.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleLoading = this.handleLoading.bind(this);
+	}
+
+	handleLoading(){
+    setTimeout(() => {
+				this.setState({
+					isLoading:false
+				})
+		}, 1100)
+	}
+
+	signIn() {
+    
+    const { username, password } = this.state; 
+
+		Auth.signIn({
+			username: username,
+			password: password
+		})
+			.then(() => 
+				this.setState({
+          isLoading: true,
+          signedIn:true
+			}))
+			.catch(() => {
+				this.setState({
+					isLoading: true,
+					errMess:true
+			})
+		});
+	}
+
+	handleSubmit(event) {
+
+		event.preventDefault();
+
+		this.handleLoading();
+		this.signIn();
+		this.setState({
+			username: '',
+			password: '',
+			isLoading:false
+		});
+
+		console.log("Loading is :",this.state.isLoading)
+
+		event.target.reset();
+	}
+
+	handleChange(event) {
+		if (event.target.name === 'username') {
+			this.setState({
+				username: event.target.value
+			});
+		} else if (event.target.name === 'password') {
+			this.setState({
+				password: event.target.value
+			});
+		}
+	}
+
+	render() {
+		
+		const myLoader = (
+			<Dimmer active style={{background:'rgb(79, 79, 79', color:'#6FE3E3'}}>
+				<Loader size='large' content="loading..."/>
+			</Dimmer>
+		)
+
+		if (this.state.signedIn === false) {
+			return (
+				<div className="login">
+          {this.state.isLoading ? myLoader : <LoginForm 
+                                                handleChange={this.handleChange} 
+                                                handleSubmit={this.handleSubmit} 
+                                                username={this.state.username}
+                                                password={this.state.password}
+                                                errMess={this.state.errMess}
+                                              />
           }
-        `}
-        </style>
-        <Grid textAlign='center' verticalAlign='middle'>
-          <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as='h2' textAlign='center'>Log-in to your account</Header>
-            <Form size='large'>
-              <Segment stacked>
-                <Form.Input fluid icon='user' iconPosition='left' placeholder='love@you.com' />
-                <Form.Input
-                  fluid
-                  icon='lock'
-                  iconPosition='left'
-                  placeholder='Password'
-                  type='password'
-                />
-                <Button style={{backgroundColor: '#6FE3E3', color:'#FFF'}} fluid size='large'>
-                  Login
-                </Button>
-              </Segment>
-            </Form>
-            <Message>
-              New here ? <a href='#' style={{textDecoration:'underline'}}><strong> Join me !<Icon style={{marginLeft:'0.2em'}}name='heart'/></strong></a>
-            </Message>
-          </Grid.Column>
-        </Grid>
-        </div>
-    )
+				</div>
+      );
+		} else {
+			return ( 
+				<div className="dahsboard">
+					{this.state.isLoading ? myLoader : <h1>Dashboard</h1>}
+				</div>
+			)
+		}
+	}
 }
+
+export default Login;
