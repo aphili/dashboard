@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   color: #FFF;
-  margin-top: 28vh;
   margin-bottom:0px;
 }
 
@@ -11,11 +10,6 @@
 
 .ui.large.header{
   font-size: 2.2em !important;
-}
-
-a{
-  color:#6FE3E3 !important;
-  margin-right: 2em;
 }
 
 
@@ -33,6 +27,13 @@ hr{
 
 .copyright{
   margin-top: 2em;
+}
+
+.ui.stacked.segments:before,
+.ui.stacked.segments:after,
+.ui.stacked.segment:before,
+.ui.stacked.segment:after{
+  border-top: none !important;
 }
 
 @media screen and (max-width: 640px) {
