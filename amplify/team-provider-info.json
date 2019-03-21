@@ -1,0 +1,19 @@
+{
+    "react": {
+        "awscloudformation": {
+            "AuthRoleName": "dev-dashboard-20190321120502-authRole",
+            "UnauthRoleArn": "arn:aws:iam::583813384128:role/dev-dashboard-20190321120502-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::583813384128:role/dev-dashboard-20190321120502-authRole",
+            "Region": "eu-central-1",
+            "DeploymentBucketName": "dev-dashboard-20190321120502-deployment",
+            "UnauthRoleName": "dev-dashboard-20190321120502-unauthRole",
+            "StackName": "dev-dashboard-20190321120502",
+            "StackId": "arn:aws:cloudformation:eu-central-1:583813384128:stack/dev-dashboard-20190321120502/411c3c70-4bc9-11e9-806d-06aac4edf424"
+        },
+        "categories": {
+            "auth": {
+                "cognitode137ba5": {}
+            }
+        }
+    }
+}

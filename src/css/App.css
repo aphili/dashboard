@@ -1,0 +1,62 @@
+.App {
+  text-align: center;
+  color: #FFF;
+  margin-top: 28vh;
+  margin-bottom:0px;
+}
+
+.ui.header{
+  color: #FFF !important;
+}
+
+.ui.large.header{
+  font-size: 2.2em !important;
+}
+
+a{
+  color:#6FE3E3 !important;
+  margin-right: 2em;
+}
+
+
+strong{
+  color:#6FE3E3 !important;
+}
+
+hr{
+  margin-bottom: 1.4em;
+}
+
+.text-copyright, p#small-description{
+  font-size:1.4em;
+}
+
+.copyright{
+  margin-top: 2em;
+}
+
+@media screen and (max-width: 640px) {
+
+  
+  .App {
+    text-align: center;
+    color: #FFF;
+    margin-top: 18vh;
+    margin-bottom:0px;
+  }
+
+  a{
+    color:#6FE3E3 !important;
+    margin-right: 1em;
+    
+  }
+
+  .ui.large.header{
+    font-size: 1.6em !important;
+  }
+
+  .text-copyright, p#small-description{
+    font-size:1em !important;
+  }
+  
+}

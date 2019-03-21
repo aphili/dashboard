@@ -1,0 +1,21 @@
+body {
+  background: rgb(79, 79, 79) !important;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height:100%;
+  width:100%;
+  overflow: hidden;
+}
+
+
+
+@media screen and (max-width: 640px) {
+
+  body{
+    overflow: hidden !important;
+  }
+  
+  
+}
